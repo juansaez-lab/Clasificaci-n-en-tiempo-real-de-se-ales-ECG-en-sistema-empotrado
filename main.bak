@@ -1,0 +1,17 @@
+#include <stdint.h>
+
+#define ECG_LENGTH 10000
+
+extern int16_t ecg_signal[ECG_LENGTH]; // Solo la declaración
+
+volatile int16_t *debug_ptr = ecg_signal;
+
+void main() {
+    volatile int i;
+    for (i = 0; i < ECG_LENGTH; i++) {
+        ecg_signal[i] = 0; // Sobrescribe, si lo necesitas
+    }
+
+    while (1); // Loop infinito para debug
+}
+

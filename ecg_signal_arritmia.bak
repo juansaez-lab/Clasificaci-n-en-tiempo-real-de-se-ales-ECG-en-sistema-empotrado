@@ -1,0 +1,18 @@
+#pragma DATA_SECTION(ecg_signal_aritmia, ".EXT_RAM")
+short ecg_signal_aritmia[5000] = {0};
+
+// Inserta picos simulados (valores de 1000) en posiciones variables
+ecg_signal_aritmia[100] = 1000;
+ecg_signal_aritmia[900] = 1000;
+ecg_signal_aritmia[2000] = 1000;
+ecg_signal_aritmia[2600] = 1000;
+ecg_signal_aritmia[3900] = 1000;
+ecg_signal_aritmia[4700] = 1000;
+
+// Opcional: relleno entre picos con señal base
+for (int i = 0; i < 5000; i++) {
+    if (ecg_signal_aritmia[i] != 1000) {
+        ecg_signal_aritmia[i] = 300 + (rand() % 20); // Ruido bajo tipo ECG
+    }
+}
+
